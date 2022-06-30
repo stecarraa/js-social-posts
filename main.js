@@ -182,16 +182,16 @@ let likesButton = document.querySelectorAll(`.likes__cta>a`);
 
 likesButton.forEach(element => {
 
+    addEventListener('click', function(e) {e.preventDefault();  
+        
+        
+    if (element.classList.contains("like-button--liked") === true)
+    element.classList.remove("like-button--liked");
+    else{
+        element.classList.add("like-button--liked");
 
-    element.addEventListener('click', () => {
+    }})
 
-        if (likesButton.classList.contains("like-button--liked") == true)
-        element.classList.remove("like-button--liked");
-        else{
-            element.classList.add("like-button--liked");
-
-        }
-    });
 
 });
 
