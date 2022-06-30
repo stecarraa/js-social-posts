@@ -124,13 +124,14 @@ const posts = [
     }
 ];
 
-const postsList = document.getElementsByClassName('posts-list');
+const postsList = document.getElementById('container');
+
 let post = '';
 
 
-const { id, content, media, author, likes, is_liked, created } = posts;
     
 for (let i = 0; i < posts.length; i++) {
+    const { id, content, media, author, likes, is_liked, created } = posts[i];
     post += `
     <div class="post">
     <div class="post__header">
@@ -164,6 +165,24 @@ for (let i = 0; i < posts.length; i++) {
 </div>
 
     `
+   
 }
 
-postsList.innerHTML += post;
+postsList.innerHTML = post;
+
+// let like = document.getElementsByClassName("like-button")[0];
+let like = document.querySelectorAll("likes_cta>a");
+
+like.addEventListener('click', function(){
+    like.classList.toggle("like-button--liked");
+
+})
+
+
+
+    
+
+    
+  
+
+  
