@@ -132,6 +132,13 @@ let post = '';
     
 for (let i = 0; i < posts.length; i++) {
     const { id, content, media, author, likes, is_liked, created } = posts[i];
+    let is_liked_class = "";
+
+    if (is_liked === true)
+        is_liked_class = "like-button--liked"
+    else
+        is_liked_class = ""
+
     post += `
     <div class="post">
     <div class="post__header">
@@ -152,7 +159,7 @@ for (let i = 0; i < posts.length; i++) {
     <div class="post__footer">
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#" data-postid="1">
+                <a class="${is_liked_class} like-button  js-like-button" href="#" data-postid="1">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                     <span class="like-button__label">Mi Piace</span>
                 </a>
@@ -171,12 +178,26 @@ for (let i = 0; i < posts.length; i++) {
 postsList.innerHTML = post;
 
 // let like = document.getElementsByClassName("like-button")[0];
-let like = document.querySelectorAll("likes_cta>a");
+let likesButton = document.querySelectorAll(`.likes__cta>a`);
 
-like.addEventListener('click', function(){
-    like.classList.toggle("like-button--liked");
+likesButton.forEach(element => {
 
-})
+
+    element.addEventListener('click', () => {
+
+        if (likesButton.classList.contains("like-button--liked") == true)
+        element.classList.remove("like-button--liked");
+        else{
+            element.classList.add("like-button--liked");
+
+        }
+    });
+
+});
+
+
+
+
 
 
 
